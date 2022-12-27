@@ -1,0 +1,28 @@
+<body>
+  <!-- テンプレート -->
+  <div id="app">
+    値段<input type="text" v-model="inputPrice">
+    枚数<input type="text" v-model="inputNumOfSheet">
+    箱数<input type="text" v-model="inputNumOfBox">
+    <p>１枚あたり{{ amountPerSheet }}円</p>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <!-- スクリプト -->
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        inputPrice: '',
+        inputNumOfSheet: '',
+        inputNumOfBox: '',
+      },
+      computed: {
+        amountPerSheet: function () {
+          return this.inputPrice / this.inputNumOfSheet / this.inputNumOfBox
+        }
+      }
+    })
+  </script>
+</body>
+</html>
