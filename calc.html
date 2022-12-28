@@ -1,10 +1,23 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Document</title>
+</head>
 <body>
   <!-- テンプレート -->
-  <div id="app">
-    値段<input type="text" v-model="inputPrice">
-    枚数<input type="text" v-model="inputNumOfSheet">
-    箱数<input type="text" v-model="inputNumOfBox">
-    <p>１枚あたり{{ amountPerSheet }}円</p>
+  <div id="app" class="main">
+    <div class="contents1">
+      値段<input type="number" class="txt" v-model="inputPrice1"><br>
+      枚数<input type="number" class="txt" v-model="inputNumOfSheet1"><br>
+      箱数<input type="number" class="txt" v-model="inputNumOfBox1"><br>
+      <p class="amount">１枚あたり{{ amountPerSheet1 }}円</p>
+    </div>
+    <div class="contents2">
+      値段<input type="number" class="txt" v-model="inputPrice2"><br>
+      枚数<input type="number" class="txt" v-model="inputNumOfSheet2"><br>
+      箱数<input type="number" class="txt" v-model="inputNumOfBox2"><br>
+      <p class="amount">１枚あたり{{ amountPerSheet2 }}円</p>
+    </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
@@ -13,16 +26,45 @@
     const app = new Vue({
       el: "#app",
       data: {
-        inputPrice: '',
-        inputNumOfSheet: '',
-        inputNumOfBox: '',
+        inputPrice1: '',
+        inputNumOfSheet1: '',
+        inputNumOfBox1: '',
+        inputPrice2: '',
+        inputNumOfSheet2: '',
+        inputNumOfBox2: '',
       },
       computed: {
-        amountPerSheet: function () {
-          return this.inputPrice / this.inputNumOfSheet / this.inputNumOfBox
+        amountPerSheet1: function () {
+          return this.inputPrice1 / this.inputNumOfSheet1 / this.inputNumOfBox1
+        },
+        amountPerSheet2: function () {
+          return this.inputPrice2 / this.inputNumOfSheet2 / this.inputNumOfBox2
         }
       }
     })
   </script>
+
+  <!-- CSS -->
+  <style>
+    .main{
+      display: flex;
+    }
+    .contents1,.contents2{
+      width: 50%;
+      height: 100px;
+    }
+    .txt{
+      display: inline-block;
+      width: 50%;
+      padding: 0.5em;
+      border: 1px solid #999;
+      box-sizing: border-box;
+      background: #f2f2f2;
+      margin: 0.5em 0.5em 0.5em 1.5em;
+    }
+    .amount{
+      margin: 0.5em 0.5em 0.5em 1.5em;
+      text-align: left;
+    }
+  </style>
 </body>
-</html>
